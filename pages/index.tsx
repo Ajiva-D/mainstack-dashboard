@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Sidebar from '@/components/Sidebar'
 import Navbar from '@/components/Navbar'
+import PageViews from '@/components/PageViews'
 
 
 export default function Home() {
@@ -12,8 +13,11 @@ export default function Home() {
 				<Sidebar />
 			</div>
 
-			<div className="col-span-12 md:col-span-3 px-[60px]">
+			<div className="col-span-12 md:col-span-9 px-[60px]">
 				<Navbar />
+				<section>
+					<PageViews />
+				</section>
 			</div>
 		</main>
 	)
