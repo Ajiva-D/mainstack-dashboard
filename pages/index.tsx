@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Sidebar from '@/components/Sidebar'
+import Navbar from '@/components/Navbar'
 
 
 export default function Home() {
@@ -9,6 +10,10 @@ export default function Home() {
 		>
 			<div className="col-span-12 md:col-span-3">
 				<Sidebar />
+			</div>
+
+			<div className="col-span-12 md:col-span-3 px-[60px]">
+				<Navbar />
 			</div>
 		</main>
 	)

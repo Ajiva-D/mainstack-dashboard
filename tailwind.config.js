@@ -17,12 +17,18 @@ module.exports = {
 			},
 			colors: {
 				gray: {
+					"100": "#EFF1F6",
 					"400": "#4D5760"
 				},
 				orange: {
 					"300": "#FF5403"
-				}
-			}
+				},
+				black: "#131316"
+			},
+			letterSpacing: {
+				tightest: '-.015em',
+				tighter: '-.05em',
+			},
 		},
 	},
 	plugins: [],
