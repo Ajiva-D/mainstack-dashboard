@@ -16,6 +16,26 @@
 	}
 }
 
+@layer base {
+	@font-face {
+		font-family: "Soehne";
+		font-weight: 400;
+		src: local("Soehne"), url(/fonts/test-soehne-buch.woff2) format("woff2");
+	}
+
+	@font-face {
+		font-family: "Soehne";
+		font-weight: 500;
+		src: local("Soehne"), url(/fonts/test-soehne-kraftig.woff2) format("woff2");
+	}
+
+	@font-face {
+		font-family: "Soehne";
+		font-weight: 700;
+		src: local("Soehne"), url(/fonts/test-soehne-halbfett.woff2) format("woff2");
+	}
+}
+
 body {
 }
 
