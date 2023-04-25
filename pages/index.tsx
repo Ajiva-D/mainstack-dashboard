@@ -9,9 +9,9 @@ export default function Home() {
 		<main
 			className={` min-h-screen flex font-soehne`}
 		>
-			<div className='fixed top-0 w-[23%]'><Sidebar /></div>
+			<div className='hidden md:block fixed top-0 w-[23%]'><Sidebar /></div>
 
-			<div className="ml-[23%] w-[77%] px-[60px]">
+			<div className="md:ml-[23%] md:w-[77%] px-8 md:px-[60px]">
 				<div className='fixed w-full'>
 					<Navbar />
 				</div>
