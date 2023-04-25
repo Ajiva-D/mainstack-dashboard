@@ -7,15 +7,15 @@ import PageViews from '@/components/PageViews'
 export default function Home() {
 	return (
 		<main
-			className={` min-h-screen grid grid-cols-12 font-soehne`}
+			className={` min-h-screen flex font-soehne`}
 		>
-			<div className="col-span-12 md:col-span-3">
-				<Sidebar />
-			</div>
+			<div className='fixed top-0 w-[23%]'><Sidebar /></div>
 
-			<div className="col-span-12 md:col-span-9 px-[60px]">
-				<Navbar />
-				<section>
+			<div className="ml-[23%] w-[77%] px-[60px]">
+				<div className='fixed w-full'>
+					<Navbar />
+				</div>
+				<section className='mt-[72px]'>
 					<PageViews />
 				</section>
 			</div>
