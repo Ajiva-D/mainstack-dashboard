@@ -1,6 +1,7 @@
 import React from 'react'
 import { InfoIcon } from './icons';
 import DonutCharts from './DonutCharts';
+import LineChart from './LineChart';
 
 const PageViews = () => {
 	const buttons: Array<{ text: string; active: boolean }> = [
@@ -34,6 +35,8 @@ const PageViews = () => {
 				</div>
 				<p className=' text-gray-500 text-sm mt-2'>All time</p>
 				<h1 className=' text-5xl text-black font-bold tracking-tightest mt-6'>500</h1>
+
+				<LineChart />
 			</div>
 
 			<div className="grid grid-cols-2 gap-4 mt-6">
