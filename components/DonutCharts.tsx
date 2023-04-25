@@ -1,6 +1,7 @@
 import React from 'react'
 import { Chart as ChartJS, ArcElement, Tooltip } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import Image from 'next/image';
 
 ChartJS.register(ArcElement, Tooltip);
 
@@ -21,9 +22,10 @@ export interface DonutChartProps {
 }
 interface TitleProps {
 	title: string;
-	donutChartData: DonutChartProps
+	donutChartData: DonutChartProps;
+	images: string[]
 }
-const DonutCharts: React.FC<TitleProps> = ({ title, donutChartData: { data, labels } }) => {
+const DonutCharts: React.FC<TitleProps> = ({ title, images, donutChartData: { data, labels } }) => {
 	const chartData = {
 		labels,
 		datasets: [
@@ -47,6 +49,7 @@ const DonutCharts: React.FC<TitleProps> = ({ title, donutChartData: { data, labe
 			<div className="flex justify-between mt-11 items-start">
 				<ul className='space-y-4'>
 					{labels?.map((label, index) => (<li className='flex space-x-3 items-center text-black capitalize' key={label}>
+						<Image src={images[index]} alt={label} width={20} height={15} className='rounded-[3px]' />
 						<p>{label} <span className='font-medium'>{data?.[index]}%</span></p> <div className="w-3 h-3 rounded-full" style={{ backgroundColor: bgColors[index] }}></div>
 					</li>))}
 				</ul>

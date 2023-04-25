@@ -12,6 +12,21 @@ const buttons: Array<{ text: string; active: boolean }> = [
 
 ]
 
+const locationImages: string[] = [
+	'https://www.countryflagicons.com/FLAT/64/NG.png',
+	'https://www.countryflagicons.com/FLAT/64/DE.png',
+	'https://www.countryflagicons.com/FLAT/64/GH.png',
+	'https://www.countryflagicons.com/FLAT/64/FI.png',
+	'https://www.countryflagicons.com/FLAT/64/GB.png',
+]
+
+const sourcesImages: string[] = [
+	'/images/google.webp',
+	'/images/Instagram.png',
+	'/images/twitter.png',
+	'/images/linkedin.png',
+]
+
 const PageViews = () => {
 	const [graphChartData, setGraphData] = useState<LineChartProps>()
 	const [topLocationChartData, setTopLocationChartData] = useState<DonutChartProps>({ data: undefined, labels: undefined })
@@ -85,8 +100,8 @@ const PageViews = () => {
 			</div>
 
 			<div className="grid grid-cols-2 gap-4 my-6">
-				<DonutCharts title="Top Locations" donutChartData={topLocationChartData} />
-				<DonutCharts title="Top Referral source" donutChartData={topSourcesChartData} />
+				<DonutCharts title="Top Locations" donutChartData={topLocationChartData} images={locationImages} />
+				<DonutCharts title="Top Referral source" donutChartData={topSourcesChartData} images={sourcesImages} />
 			</div>
 		</main>
 	)
