@@ -25,6 +25,7 @@ Chart.defaults.font.size = 14;
 
 const options = {
 	responsive: true,
+	maintainAspectRatio: false,
 	plugins: {
 		legend: {
 			display: false
@@ -89,7 +90,7 @@ const LineChart: React.FC<LineChartProps> = ({ data, labels }) => {
 		],
 	};
 	return (
-		<div className='mt-10'> {chartData && <Line data={chartData} options={options} />}</div>
+		<div className='mt-10 h-[300px]'> {chartData && <Line data={chartData} options={options} />}</div>
 	)
 }
 
