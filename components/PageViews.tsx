@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { InfoIcon } from './icons';
-import DonutCharts from './DonutCharts';
+import DonutCharts, { DonutChartProps } from './DonutCharts';
 import LineChart, { LineChartProps } from './LineChart';
 const buttons: Array<{ text: string; active: boolean }> = [
 	{ text: '1 Day', active: false },
@@ -14,13 +14,19 @@ const buttons: Array<{ text: string; active: boolean }> = [
 
 const PageViews = () => {
 	const [graphChartData, setGraphData] = useState<LineChartProps>()
+	const [topLocationChartData, setTopLocationChartData] = useState<DonutChartProps>({ data: undefined, labels: undefined })
+	const [topSourcesChartData, setTopSourcesChartData] = useState<DonutChartProps>({ data: undefined, labels: undefined })
+
 
 	const fetchData = async () => {
 		const url = "https://fe-task-api.mainstack.io/"
-
 		try {
 			let res = await fetch(url)
 			let { graph_data: { views }, top_locations, top_sources
+			}: {
+				graph_data: { views: { [key: string]: number } },
+				top_locations: Array<{ country: string; count: number; percent: number }>,
+				top_sources: Array<{ source: string; count: number; percent: number }>
 			} = await res.json()
 
 			// options for date formatting
@@ -31,10 +37,20 @@ const PageViews = () => {
 			const graphLabels: string[] = Object.keys(views).map((key) => new Date(key).toLocaleDateString('en-US', dateOptions));
 			setGraphData({ data: graphDataset, labels: graphLabels })
 
+			// convert top location data from api to dataset and labels for donut chart
+			const locationDataSet: number[] = top_locations.map((location) => location.count)
+			const locationLabels: string[] = top_locations.map((location) => location.country)
+			setTopLocationChartData({ data: locationDataSet, labels: locationLabels })
+
+			// convert top sources data from api to dataset and labels for donut chart
+			const sourcesDataSet: number[] = top_sources.map((source) => source.count)
+			const sourcesLabels: string[] = top_sources.map((source) => source.source)
+			setTopSourcesChartData({ data: sourcesDataSet, labels: sourcesLabels })
 
 		} catch (error) {
 			console.log(error);
 		}
+
 	}
 
 	useEffect(() => {
@@ -68,9 +84,9 @@ const PageViews = () => {
 				<LineChart {...graphChartData} />
 			</div>
 
-			<div className="grid grid-cols-2 gap-4 mt-6">
-				<DonutCharts title="Top Locations" />
-				<DonutCharts title="Top Referral source" />
+			<div className="grid grid-cols-2 gap-4 my-6">
+				<DonutCharts title="Top Locations" donutChartData={topLocationChartData} />
+				<DonutCharts title="Top Referral source" donutChartData={topSourcesChartData} />
 			</div>
 		</main>
 	)
