@@ -55,7 +55,7 @@ const DonutCharts: React.FC<TitleProps> = ({ title, images, donutChartData: { da
 				</ul>
 
 				<div className='w-[150px] h-[150px]'>
-					{data && <Doughnut data={chartData} options={options} />}
+					{data && <div data-testid="DonutChart"><Doughnut data={chartData} options={options} /></div>}
 				</div>
 			</div>
 		</div>

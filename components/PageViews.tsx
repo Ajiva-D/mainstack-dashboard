@@ -100,7 +100,7 @@ const PageViews = () => {
 			</div>
 
 			<div className="grid grid-cols-2 gap-4 my-6">
-				<div className="col-span-2 md:col-span-1">
+				<div className="col-span-2 md:col-span-1" data-testid="DonutChart">
 					<DonutCharts title="Top Locations" donutChartData={topLocationChartData} images={locationImages} />
 				</div>
 
